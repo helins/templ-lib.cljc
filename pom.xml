@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>helins-lib-cljc</groupId>
+  <artifactId>clj-template</artifactId>
+  <version>0.0.0-alpha0</version>
+  <name>helins-lib-cljc</name>
+  <description>Template for CLJC libraries</description>
+  <url>https://github.com/helins-io/helins-lib-cljc</url>
+  <licenses>
+    <license>
+      <name>Mozilla Public License Version 2.0</name>
+      <url>https://www.mozilla.org/en-US/MPL/2.0/</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Adam Helinski</name>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/helins-io/helins-lib-cljc</url>
+    <connection>scm:git:git://github.com/helins/helins-lib-cljc.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/helins-io/helins-lib-cljc.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.10.1</version>
+    </dependency>
+    <dependency>
+      <groupId>seancorfield</groupId>
+      <artifactId>clj-new</artifactId>
+      <version>1.1.243</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>resources</sourceDirectory>
+  </build>
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <url>https://repo.clojars.org/</url>
+    </repository>
+  </repositories>
+  <distributionManagement>
+    <repository>
+      <id>clojars</id>
+      <name>Clojars repository</name>
+      <url>https://clojars.org/repo</url>
+    </repository>
+  </distributionManagement>
+</project>

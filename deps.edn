@@ -1,0 +1,29 @@
+{:aliases
+ {:deploy
+  {:exec-args    {:installer :remote :artifact "helins-lib-cljc.jar"}
+   :exec-fn      deps-deploy.deps-deploy/deploy
+   :replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}}
+
+  :dev
+  {:extra-paths ["src/dev"]}
+
+  :install
+  {:exec-args    {:artifact  "release.jar"
+                  :installer :local}
+   :exec-fn      deps-deploy.deps-deploy/deploy
+   :replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}}
+
+  :jar
+  {:exec-args    {:jar      "release.jar"
+                  :sync-pom true}
+   :exec-fn      hf.depstar/jar
+   :replace-deps {seancorfield/depstar {:mvn/version "2.0.171"}}}
+
+  :new
+  {:exec-args {:template helins-lib-cljc}
+   :exec-fn   clj-new/create}}
+
+ :deps {seancorfield/clj-new {:mvn/version "1.1.243"}}
+
+ :paths ["resources"
+         "src/main"]}
