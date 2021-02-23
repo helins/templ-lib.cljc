@@ -25,7 +25,7 @@ similarly to:
 {:alias
  {:new-lib-cljc
   {:extra-deps {helins-lib-cljc/clj-template {:git/url "https://github.com/helins-io/helins-lib-cljc"
-                                              :sha     "81749895edb5431640a56bddbb6affdde6708c41"}
+                                              :sha     "5a09c4ecaaa6ae7cbc098df3789f3ed9c3128f14"}
                 seancorfield/clj-new         {:mvn/version "1.1.243"}}
    :exec-args  {:template helins-lib-cljc}
    :exec-fn    clj-new/create}}}
