@@ -1,8 +1,6 @@
 # Template for CLJC libraries
 
-## Usage
-
-Template for [clj-new](https://github.com/seancorfield/clj-new) for creating
+Template for [clj-new](https://github.com/seancorfield/clj-new) aimed at creating
 CLJC libraries.
 
 Provides a workflow adapted for working in Clojure and Clojurescript at the
@@ -16,7 +14,29 @@ Node, and [Chui](https://github.com/lambdaisland/chui) in the browser (with
 advanced compilation if needed).
 
 The `./extra` folder contains scripts and resources the user might want to use
-(currently part of the template.
+(currently not part of the template).
+
+## Usage
+
+Add the following alias to your `~/.clojure/deps.edn` file with the latest SHA,
+similarly to:
+
+```clojure
+{:alias
+ {:new-lib-cljc
+  {:extra-deps {helins-lib-cljc/clj-template {:git/url "https://github.com/helins-io/helins-lib-cljc"
+                                              :sha     "81749895edb5431640a56bddbb6affdde6708c41"}
+                seancorfield/clj-new         {:mvn/version "1.1.243"}}
+   :exec-args  {:template helins-lib-cljc}
+   :exec-fn    clj-new/create}}}
+```
+
+Creating a new project:
+
+```shell
+$ clj -X:new-lib-cljc :name your-group/project-name
+```
+
 
 ## License
 
