@@ -8,13 +8,12 @@ same time. Based around [deps](https://clojure.org/reference/deps_and_cli), the
 Clojurescript parts being handled by
 [Shadow-CLJS](https://github.com/thheller/shadow-cljs).
 
-Testing is done via [Kaocha](https://github.com/lambdaisland/kaocha) on the JVM,
-[Kaocha-CLJS](https://github.com/lambdaisland/kaocha-cljs) for Clojurescript on
-Node, and [Chui](https://github.com/lambdaisland/chui) in the browser (with
-advanced compilation if needed).
+Testing is done via [Kaocha](https://github.com/lambdaisland/kaocha) on the JVM
+and Shadow-CLJS for Clojurescript.
 
-The `./extra` folder contains scripts and resources the user might want to use
-(currently not part of the template).
+The `./extra` folder contains scripts suited for this organization (eg.
+launching tests, a dev environment, ...) the user might want to copy.
+
 
 ## Usage
 

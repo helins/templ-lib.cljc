@@ -9,8 +9,7 @@
 
   {:author "{{ developer }}"}
 
-  (:require [kaocha.repl]
-            [{{ group }}.{{ name }}     :as {{ name }}]
+  (:require [{{ group }}.{{ name }}     :as {{ name }}]
             [{{ group }}.{{ name }}.dev :as {{ name }}.dev]))
 
 

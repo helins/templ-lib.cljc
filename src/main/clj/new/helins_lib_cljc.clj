@@ -5,7 +5,7 @@
 
 (ns clj.new.helins-lib-cljc
   
-  ""
+  "Template."
 
   {:author "Adam Helinski"}
 
@@ -33,9 +33,13 @@
                                ["CHANGELOG.md"
                                 (render "CHANGELOG.md"
                                         data)]
+                               ["cljs/index.html"
+                                (raw "cljs/index.html")]
                                ["deps.edn"
                                 (render "deps.edn"
                                         data)]
+                               ["kaocha.edn"
+                                (raw "kaocha.edn")]
                                ["LICENSE"
                                 (raw "LICENSE")]
                                ["pom.xml"
@@ -58,6 +62,4 @@
                                         data)]
                                ["README.md"
                                 (render "README.md"
-                                        data)]
-                               ["tests.edn"
-                                (raw "tests.edn")])))
+                                        data)])))
