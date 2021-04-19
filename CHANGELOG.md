@@ -1,7 +1,6 @@
 # Change Log
 
 All notable changes to this project will be documented in this file.
-This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 
 
@@ -17,7 +16,7 @@ This change log follows the conventions of [keepachangelog.com](http://keepachan
 
 
 
-## 0.0.0-alpha0 - 2021-02-23
+## 0.0.0-alpha0 - 2021-XX-XX
 
 ### Added
 
