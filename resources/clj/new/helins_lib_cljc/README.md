@@ -12,37 +12,21 @@ Making dreams come true.
 Coming soon.
 
 
-## Running tests
+## Development and testing <a name="develop">
 
-Depending on hardware, tests usually takes a few minutes to run.
+This repository is organized with [Babashka](https://github.com/babashka/babashka), a wonderful tool for any Clojurist
+that comes with a powerful task runner.
 
-On the JVM, using [Kaocha](https://github.com/lambdaisland/kaocha):
+Listing tasks:
 
-```bash
-$ ./bin/test/jvm/run
-```
-On NodeJS, using [Shadow-CLJS](https://github.com/thheller/shadow-cljs):
-
-```bash
-$ ./bin/test/node/run
-
-# Or testing an advanced build:
-$ ./bin/test/node/advanced
+```shell
+$ bb tasks
 ```
 
+Starting a task, for instance a REPL:
 
-## Development
-
-Starting in Clojure JVM mode, mentioning an additional Deps alias (here, a local
-setup of NREPL):
-```bash
-$ ./bin/dev/clojure :nrepl
-```
-
-Starting in CLJS mode using [Shadow-CLJS](https://github.com/thheller/shadow-cljs):
-```bash
-$ ./bin/dev/cljs
-# Then open ./cljs/index.html
+```shell
+$ bb dev:clojure
 ```
 
 
