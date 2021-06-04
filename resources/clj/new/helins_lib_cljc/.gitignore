@@ -33,6 +33,7 @@ package.json
 !/cljs/index.html
 
 
-// Wasmer
 
-./wasmer/runtime/*
+// Keeping private things
+
+private

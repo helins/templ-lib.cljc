@@ -58,7 +58,7 @@
          test:jvm:watch
 
          {:doc "Run tests on the JVM everytime a file is changed ; accepts Kaocha CLI arguments"
-          :task (test-node ["--watch"])}
+          :task (test-jvm ["--watch"])}
 
 
 
