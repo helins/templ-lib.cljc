@@ -29,6 +29,10 @@
   :kaocha
   {:extra-deps {lambdaisland/kaocha {:mvn/version "1.0.829"}}}
 
+  :nrepl
+  {:extra-deps {nrepl/nrepl {:mvn/version "RELEASE"}}
+   :main-opts  ["-m" "nrepl.cmdline" "--port" "14563"]}
+
   :test
   {:extra-paths ["src/test"]}}
 

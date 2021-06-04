@@ -18,7 +18,7 @@
 
 (defn helins-lib-cljc
 
-  ""
+  "Does the whole templating."
 
   [project-name]
 
@@ -30,6 +30,8 @@
     (clj.new.templates/->files data
                                [".gitignore"
                                 (raw ".gitignore")]
+                               ["bb.edn"
+                                (raw "bb.edn")]
                                ["CHANGELOG.md"
                                 (render "CHANGELOG.md"
                                         data)]
