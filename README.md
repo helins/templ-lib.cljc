@@ -11,8 +11,8 @@ Clojurescript parts being handled by
 Testing is done via [Kaocha](https://github.com/lambdaisland/kaocha) on the JVM
 and Shadow-CLJS for Clojurescript.
 
-The `./extra` folder contains scripts suited for this organization (eg.
-launching tests, a dev environment, ...) the user might want to copy.
+A `bb.edn` file is generated for running common [Babashka](https://github.com/babashka/babashka
+tasks such as installing the library locally, deploying, starting a REPL, etc.
 
 
 ## Usage
@@ -24,7 +24,7 @@ similarly to:
 {:alias
  {:new-lib-cljc
   {:extra-deps {helins-lib-cljc/clj-template {:git/url "https://github.com/helins-io/helins-lib-cljc"
-                                              :sha     "c2438aaa7c6e1fc11d9f328275987cee6b7720bc"}
+                                              :sha     "..."}
                 seancorfield/clj-new         {:mvn/version "1.1.243"}}
    :exec-args  {:template helins-lib-cljc}
    :exec-fn    clj-new/create}}}
