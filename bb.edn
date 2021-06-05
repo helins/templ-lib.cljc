@@ -1,4 +1,6 @@
-{:tasks {clean (shell "rm -rf foo")
-         test  (clojure "-X:new :name foo/foo")
+{:tasks {clean     (fs/delete-tree "foo")
+         test      (clojure "-X:new :name foo/foo")
+
+         :requires ([babashka.fs :as fs])
          }}
 

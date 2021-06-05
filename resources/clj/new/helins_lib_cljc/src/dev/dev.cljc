@@ -7,7 +7,9 @@
 
   "CLJC playground during dev."
 
-  {:author "{{ developer }}"}
+  {:author           "{{ developer }}"
+   :clj-kondo/config '{:linters {:unused-namespace {:level :off}}}}
+
 
   (:require [{{ group }}.{{ name }} :as {{ name }}]))
 
