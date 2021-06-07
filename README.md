@@ -24,8 +24,8 @@ The following tasks are available:
 
 cp                 Print the classpath
 cp:del             Delete cached classpath
-deploy             Deploy this project to Clojars
-dev:clojure        Start Clojure JVM dev environment (NREPL on port 14563)
+deploy             Deploy this project to Clojars ; need username and path to file with Clojars token
+devclojure         Start Clojure JVM dev environment (NREPL on port 14563)
 dev:cljs           Start CLJS dev environment (NREPL on port 14563, server on port 8000)
 install            Install jar to local Maven repo
 jar                Build a jar for this project
@@ -43,12 +43,12 @@ test:node:optimize Run tests on NodeJS after advanced compilation
 
 ## Usage
 
-In `~/.clojure/deps.edn`, add an alias like:
+In `~/.clojure/deps.edn`, add an alias such as (substituting `$VERSION`):
 
 ```clojure
 {:alias
  {:new-lib-cljc
-  {:extra-deps {io.helins/templ-lib.cljc {:mvn/version "1.0.0"}}
+  {:extra-deps {io.helins/templ-lib.cljc {:mvn/version "$VERSION"}}
    :exec-args  {:template helins-lib-cljc}
    :exec-fn    clj-new/create}
 ```
