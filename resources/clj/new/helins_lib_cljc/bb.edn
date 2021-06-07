@@ -19,11 +19,11 @@
          deploy
 
          {:depends [jar]
-          :doc     "Deploy this project to Clojars"
-          :task    (clojure {"CLOJARS_USERNAME" (first *command-line-args*)
-                             "CLOJARS_PASSWORD" (second *command-line-args*)}
+          :doc     "Deploy this project to Clojars ; need username and path to file with Clojars token"
+          :task    (clojure {:extra-env {"CLOJARS_USERNAME" (first *command-line-args*)
+                                         "CLOJARS_PASSWORD" (slurp (second *command-line-args*))}}
                             "-X:deploy")}
-         
+
 
 
          dev:clojure
