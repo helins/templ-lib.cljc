@@ -1,6 +1,104 @@
-{:tasks {clean     (fs/delete-tree "foo")
-         test      (clojure "-X:new :name foo/foo")
+{:tasks {cp
+
+         {:doc  "Print the classpath"
+          :task (do
+                  (println "Computing and printing classpath...\n")
+                  (doseq [line (sort (clojure.string/split (cp-string)
+                                                           (re-pattern ":")))]
+                    (println line)))}
+
+
+
+         cp:del
+
+         {:doc  "Delete cached classpath"
+          :task (fs/delete-tree ".cpcache")}
+
+
+
+         deploy
+
+         {:depends [jar]
+          :doc     "Deploy this project to Clojars"
+          :task    (clojure {"CLOJARS_USERNAME" (first *command-line-args*)
+                             "CLOJARS_PASSWORD" (second *command-line-args*)}
+                            "-X:deploy")}
+         
+
+
+         dev
+
+         {:doc  "Starts NREPL on port 14563"
+          :task (clojure "-M:dev:test:nrepl")}
+
+
+
+         install
+
+         {:depends [jar]
+          :doc     "Install jar to local Maven repo"
+          :task    (clojure "-X:install")}
+
+
+
+         jar
+
+         {:doc  "Build a jar for this project"
+          :task (clojure "-X:jar")}
+
+
+
+         lint
+
+         {:doc "Start Clj-kondo on './src' (further path can be provided as command-line argument)"
+          :task (shell (str "clj-kondo --lint src/"
+                            (first *command-line-args*)))}
+
+
+
+         lint:import
+
+         {:doc  "Initialize Clj-kondo and copy configuration files from dependencies"
+          :task (shell (format "clj-kondo --lint '%s' --dependencies --parallel --copy-configs"
+                               (cp-string)))}
+
+
+
+         pom
+
+         {:doc  "Sync POM file with 'deps.edn'"
+          :task (clojure "-Spom")}
+
+
+
+         test
+         
+         (clojure "-X:new :name foo/foo")
+
+
+
+         test:clean
+
+         (fs/delete-tree "foo")
+
+
 
          :requires ([babashka.fs :as fs])
-         }}
 
+
+
+         :init
+
+         (do
+           (defn cp-string
+
+             ;; Returns the classpath as a string, reading profiles from CLI args.
+
+             []
+
+             (with-out-str (clojure (str "-Spath "
+                                         (when (some? *command-line-args*)
+                                           (str "-A"
+                                                (clojure.string/join ""
+                                                                     *command-line-args*)))))))
+           )}}

@@ -20,7 +20,9 @@
 
          {:depends [jar]
           :doc     "Deploy this project to Clojars"
-          :task    (clojure "-X:deploy")}
+          :task    (clojure {"CLOJARS_USERNAME" (first *command-line-args*)
+                             "CLOJARS_PASSWORD" (second *command-line-args*)}
+                            "-X:deploy")}
          
 
 

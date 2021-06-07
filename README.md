@@ -1,5 +1,7 @@
 # Template for CLJC libraries
 
+[![Clojars](https://img.shields.io/clojars/v/io.helins/templ-lib.cljc.svg)](https://clojars.org/io.helins/templ-lib.cljc)
+
 Template for [clj-new](https://github.com/seancorfield/clj-new) aimed at creating
 CLJC libraries.
 
@@ -11,23 +13,44 @@ Clojurescript parts being handled by
 Testing is done via [Kaocha](https://github.com/lambdaisland/kaocha) on the JVM
 and Shadow-CLJS for Clojurescript.
 
-A `bb.edn` file is generated for running common [Babashka](https://github.com/babashka/babashka
-tasks such as installing the library locally, deploying, starting a REPL, etc.
+Created repository is aimed to be managed with [Babashka](https://github.com/babashka/babashka), a wonderful
+tool for any Clojurist that provides a powerful task runner. A default `bb.edn` file is generated with a set
+of common tasks:
+
+```shell
+$ bb tasks
+
+The following tasks are available:
+
+cp                 Print the classpath
+cp:del             Delete cached classpath
+deploy             Deploy this project to Clojars
+dev:clojure        Start Clojure JVM dev environment (NREPL on port 14563)
+dev:cljs           Start CLJS dev environment (NREPL on port 14563, server on port 8000)
+install            Install jar to local Maven repo
+jar                Build a jar for this project
+lint               Start Clj-kondo on './src' (further path can be provided as command-line argument)
+lint:import        Initialize Clj-kondo and copy configuration files from dependencies
+pom                Sync POM file with 'deps.edn'
+shadow:clean       Remove the given profile from Shadow-CLJS cache (for full recompilation)
+shadow:clean-test  Like 'shadow:clean' but for the ':test-node' profile
+test:jvm           Run tests on the JVM once ; accepts Kaocha CLI arguments
+test:jvm:watch     Run tests on the JVM everytime a file is changed ; accepts Kaocha CLI arguments
+test:node          Run tests on NodeJS after unoptimized compilation
+test:node:optimize Run tests on NodeJS after advanced compilation
+```
 
 
 ## Usage
 
-Add the following alias to your `~/.clojure/deps.edn` file with the latest SHA,
-similarly to:
+In `~/.clojure/deps.edn`, add an alias like:
 
 ```clojure
 {:alias
  {:new-lib-cljc
-  {:extra-deps {helins-lib-cljc/clj-template {:git/url "https://github.com/helins-io/helins-lib-cljc"
-                                              :sha     "..."}
-                seancorfield/clj-new         {:mvn/version "1.1.243"}}
+  {:extra-deps {io.helins/templ-lib.cljc {:mvn/version "1.0.0"}}
    :exec-args  {:template helins-lib-cljc}
-   :exec-fn    clj-new/create}}}
+   :exec-fn    clj-new/create}
 ```
 
 Creating a new project:

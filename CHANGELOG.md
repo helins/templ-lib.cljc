@@ -1,4 +1,4 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 
 
 
-## 0.0.0-alpha0 - 2021-XX-XX
+## 1.0.0 - 2021-06-07
 
 ### Added
 
@@ -24,6 +24,5 @@ All notable changes to this project will be documented in this file.
 
 
 
-[Unreleased]:  https://github.com/helins-io/helins-lib-cljc/compare/0.0.0-alpha0...HEAD
-[0.0.0-alpha0]:
-https://github.com/helins-io/helins-lib-cljc/releases/tag/0.0.0-alpha0
+[Unreleased]:  https://github.com/helins-io/helins-lib-cljc/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/helins-io/helins-lib-cljc/releases/tag/1.0.0
