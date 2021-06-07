@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.helins</groupId>
   <artifactId>templ-lib.cljc</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>templ-lib.cljc</name>
   <description>Template for CLJC libraries</description>
   <url>https://github.com/helins/templ-lib.cljc</url>
