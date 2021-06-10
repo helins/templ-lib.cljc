@@ -1,0 +1,110 @@
+version: 2.1
+
+
+
+# Anchors for reusability
+with_java_version: &with_java_version
+    parameters:
+      java_version:
+        description: "OpenJDK version to test"
+        type: string
+
+cache_paths_clojure: &cache_paths_clojure
+  paths:
+    - ~/.m2
+    - .cpcache
+
+
+
+
+commands:
+  install_bb:
+    description: "Install Babashka"
+    parameters:
+      version:
+        default: "0.4.4"
+        type: string
+    steps:
+      - restore_cache:
+          keys:
+            - babashka-<< parameters.version >>
+      - run:
+          name: Download Babashka
+          command: if ! [ -f "bb" ]; then \curl -L https://github.com/babashka/babashka/releases/download/v<< parameters.version >>/babashka-<< parameters.version >>-linux-amd64.tar.gz -o bb.tar.gz ; fi
+      - run:
+          name: Uncompress Babashka
+          command: if [ -f "bb.tar.gz" ]; then \tar -xzvf bb.tar.gz ; fi
+      - run:
+          name: Ensure Babashka is executable
+          command: chmod +x bb
+      - save_cache:
+          key: babashka-<< parameters.version >>
+          paths:
+            - bb
+
+
+
+
+executors:
+  exec_java:
+    docker:
+      - image: circleci/clojure:openjdk-<< parameters.java_version >>-tools-deps-node
+    <<: *with_java_version
+
+
+
+jobs:
+
+  TestNode:
+    docker:
+      - image: circleci/clojure:openjdk-11-tools-deps-node-browsers
+    steps:
+      - checkout
+      - install_bb
+      - restore_cache:
+          keys:
+            - cljs-v1-{{ checksum "deps.edn" }}
+            - cljs-v1
+      - run:
+          name: Test
+          command: ./bb test:node
+      - run:
+          name: Test advanced
+          command: ./bb test:node:optimize
+      - save_cache:
+          key: cljs-v1-{{ checksum "deps.edn" }}
+          <<: *cache_paths_clojure
+          
+
+  TestJVM:
+    <<: *with_java_version
+    executor:
+      name: exec_java
+      java_version: << parameters.java_version >>
+    docker:
+      - image: circleci/clojure:openjdk-11-tools-deps-node-browsers
+    steps:
+      - checkout
+      - install_bb
+      - restore_cache:
+          keys:
+            - clojure-v1-{{ checksum "pom.xml" }}
+            - clojure-v1
+      - run: 
+          name: Koacha
+          command: ./bb test:jvm
+      - save_cache:
+          key: clojure-v1-{{ checksum "pom.xml" }}
+          <<: *cache_paths_clojure
+
+
+
+workflows:
+  version: 2
+  Test:
+    jobs:
+      - TestNode
+      - TestJVM:
+          matrix:
+            parameters:
+              java_version: ["8", "11", "15"]

@@ -60,6 +60,12 @@ $ clj -X:new-lib-cljc :name your-group/project-name
 ```
 
 
+## Extra
+
+The `./extra` directory contains additional files, not part of the template, but which the user might be interested in.
+Currently, it only holds an example of a CircleCI configuration file.
+
+
 ## License
 
 Copyright © 2021 Adam Helinski and Contributors

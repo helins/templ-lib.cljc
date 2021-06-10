@@ -23,7 +23,7 @@
           :task    (clojure {:extra-env {"CLOJARS_USERNAME" (first *command-line-args*)
                                          "CLOJARS_PASSWORD" (slurp (second *command-line-args*))}}
                             "-X:deploy")}
-         
+
 
 
          dev
